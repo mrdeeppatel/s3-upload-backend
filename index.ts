@@ -229,10 +229,22 @@ app.post("/process-file", async (req, res) => {
 
           try {
             await transporter.sendMail({
-              from: email,
+              from: `"Avenor Exports" <${email}>`,
               to: user.email,
               subject: "Your Certificate",
-              text: `Hi ${user.name}`,
+              text: `Dear ${user.name},
+
+Greetings from the Faculty of Computer Applications and Information Technology – PG, GLS University.
+
+Please find attached your certificate for successfully completing the Hands-on Workshop on “AWS S3 for Web Hosting and Automation”.
+
+You are requested to kindly review the certificate and retain it for your future reference.
+
+In case of any discrepancy, please report the same at the earliest.
+
+Regards,  
+Faculty of Computer Applications and Information Technology – PG  
+GLS University`,
               attachments: [
                 {
                   filename: expectedFile,
